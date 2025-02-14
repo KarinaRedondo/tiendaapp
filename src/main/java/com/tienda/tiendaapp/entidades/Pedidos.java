@@ -3,6 +3,8 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Data
 @Document(collection = "pedidos")
 
@@ -18,5 +20,5 @@ public class Pedidos {
     private String direccionEntrega;
     private String cliente;
     private String domiciliario;
-    private String[] productos;
+    private List<String> productos;
 }
