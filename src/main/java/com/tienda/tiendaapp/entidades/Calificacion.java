@@ -10,7 +10,7 @@ public class Calificacion {
 
     @Id
     private String idCalificacion;
-    private String calificacionDomiciliario;
-    private String calificacionProducto;
-    private String calificacionPedido;
+    private int calificacionDomiciliario;
+    private int calificacionProducto;
+    private int calificacionPedido;
 }
