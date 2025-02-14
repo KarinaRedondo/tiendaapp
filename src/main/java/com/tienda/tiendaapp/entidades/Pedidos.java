@@ -19,5 +19,4 @@ public class Pedidos {
     private String cliente;
     private String domiciliario;
     private String[] productos;
-    private int calificacionPromedio;
 }

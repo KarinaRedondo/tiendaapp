@@ -12,6 +12,7 @@ public class Producto {
     private String idProducto;
     private String nombre;
     private String descripcion;
+    private String[] categoria;
     private int precio;
     private int stock;
     private String inventario;
