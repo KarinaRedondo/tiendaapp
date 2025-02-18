@@ -6,10 +6,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document(collection = "tenderos")
 
-public class Tendero {
+public class Tendero extends Usuario {
 
     @Id
     private String idTendero;
-    private String inventario;
     private String nombreDeLaTienda;
 }

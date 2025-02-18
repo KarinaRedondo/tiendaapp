@@ -12,7 +12,7 @@ public class Usuario {
 
     @Id
     private String id;
-    private Role rol;
+    private String rol;
     private String nombreCompleto;
     private String correoElectronico;
     private String contraseña;

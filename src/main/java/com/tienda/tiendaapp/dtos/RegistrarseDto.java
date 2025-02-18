@@ -1,5 +1,4 @@
 package com.tienda.tiendaapp.dtos;
-import com.tienda.tiendaapp.entidades.Role;
 import lombok.Data;
 
 @Data
