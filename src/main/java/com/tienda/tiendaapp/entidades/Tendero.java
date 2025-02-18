@@ -11,4 +11,7 @@ public class Tendero extends Usuario {
     @Id
     private String idTendero;
     private String nombreDeLaTienda;
+    private String direccionTienda;
+    private String telefonoTienda;
+    private String[] historialPedidosAtendidos;
 }

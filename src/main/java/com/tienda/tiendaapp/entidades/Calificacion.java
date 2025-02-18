@@ -11,6 +11,7 @@ public class Calificacion {
     @Id
     private String idCalificacion;
     private int calificacionDomiciliario;
-    private int calificacionProducto;
     private int calificacionPedido;
+    private String comentarios;
+    private String fecha;
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 
 public class RegistrarseDto {
 
-    private Role rol;
+    private String rol;
     private String nombreCompleto;
     private String correoElectronico;
     private String contraseña;

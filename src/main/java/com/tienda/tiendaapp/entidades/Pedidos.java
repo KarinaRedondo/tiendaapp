@@ -12,6 +12,10 @@ public class Pedidos {
 
     @Id
     private String idPedido;
+    private String tendero;
+    private String observaciones;
+    private String descripcionCliente;
+    private boolean aceptacionCliente;
     private String fecha;
     private String hora;
     private String estado;
@@ -20,5 +24,4 @@ public class Pedidos {
     private String direccionEntrega;
     private String cliente;
     private String domiciliario;
-    private List<String> productos;
 }

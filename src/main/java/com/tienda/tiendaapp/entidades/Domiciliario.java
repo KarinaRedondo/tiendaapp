@@ -16,5 +16,4 @@ public class Domiciliario extends Usuario{
     private int calificacionPromedio;
     private int gananciasTotales;
     private boolean estadoDeDisponibilidad;
-    private String[] pedidosActivos;
 }

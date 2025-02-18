@@ -1,4 +1,5 @@
 package com.tienda.tiendaapp.seguridad;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import java.util.Date;

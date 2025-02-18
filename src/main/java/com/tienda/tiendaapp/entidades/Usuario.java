@@ -21,7 +21,20 @@ public class Usuario {
     public String getCorreoElectronico() {
         return correoElectronico;
     }
+
     public String getContraseña() {
         return contraseña;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public String getTelefono() {
+        return telefono;
     }
 }
