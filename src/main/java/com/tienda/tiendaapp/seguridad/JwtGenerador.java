@@ -3,6 +3,8 @@ import org.springframework.security.authentication.AuthenticationCredentialsNotF
 import org.springframework.security.core.Authentication;
 import java.util.Date;
 
+
+
 public class JwtGenerador {
 
     //Método para crear un token por medio de la authentication
