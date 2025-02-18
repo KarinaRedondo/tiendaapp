@@ -12,10 +12,11 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import java.io.IOException;
 import java.util.List;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 /*La función de esta clase será validar la información del token y si esto es exitoso,
 establecerá la autenticación de un usuario en la solicitud o en el contexto de seguridad de nuestra aplicación*/
-public class JwtAuthenticationFilter OncePerRequestFilter {
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private CustomUsersDetailsService customUsersDetailsService;
