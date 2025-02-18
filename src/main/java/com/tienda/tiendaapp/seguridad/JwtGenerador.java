@@ -5,6 +5,8 @@ import java.util.Date;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
+
+
 public class JwtGenerador {
 
     //Método para crear un token por medio de la authentication
