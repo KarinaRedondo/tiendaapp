@@ -2,6 +2,8 @@ package com.tienda.tiendaapp.seguridad;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import java.util.Date;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 
 public class JwtGenerador {
 
