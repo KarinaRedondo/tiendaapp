@@ -14,27 +14,55 @@ public class Usuario {
     private String id;
     private String rol;
     private String nombreCompleto;
-    private String correoElectronico;
+    private String correo;
     private String contraseña;
     private String telefono;
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
+    public String getId() {
+        return id;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getRol() {
         return rol;
     }
 
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
     public String getNombreCompleto() {
         return nombreCompleto;
     }
 
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getcorreo() {
+        return correo;
+    }
+
+    public void setcorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
     public String getTelefono() {
         return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

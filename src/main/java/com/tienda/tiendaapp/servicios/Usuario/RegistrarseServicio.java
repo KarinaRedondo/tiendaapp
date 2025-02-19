@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
             Usuario usuario = new Usuario();
             usuario.getRol();
             usuario.getNombreCompleto();
-            usuario.getCorreoElectronico();
+            usuario.getcorreo();
             usuario.getContraseña();
             usuario.getTelefono();
 

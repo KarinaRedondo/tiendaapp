@@ -5,6 +5,6 @@ import lombok.Data;
 
 public class IniciarSesionDto {
 
-  private String correoElectronico;
+  private String correo;
   private String contraseña;
 }

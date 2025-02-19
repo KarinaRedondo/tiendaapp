@@ -8,8 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public class Cliente extends Usuario{
 
-    @Id
-    private String idCliente;
+
     private String metodoDePagoPreferido;
     private String direccion;
     private String[] historialDePedidos;

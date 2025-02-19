@@ -7,7 +7,7 @@ public class RegistrarseDto {
 
     private String rol;
     private String nombreCompleto;
-    private String correoElectronico;
+    private String correo;
     private String contraseña;
     private String telefono;
 }
