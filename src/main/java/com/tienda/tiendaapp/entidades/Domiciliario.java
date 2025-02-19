@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public class Domiciliario extends Usuario{
 
-
     private String tipoDeVehiculo;
     private String placaDelVehiculo;
     private int entregasTotales;
