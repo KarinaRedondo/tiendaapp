@@ -8,8 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public class Tendero extends Usuario {
 
-    @Id
-    private String idTendero;
+    private String numeroDeDocumento;
     private String nombreDeLaTienda;
     private String direccionTienda;
     private String telefonoTienda;
