@@ -1,4 +1,5 @@
 package com.tienda.tiendaapp.entidades;
+
 import lombok.Data;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;

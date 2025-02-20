@@ -1,4 +1,5 @@
 package com.tienda.tiendaapp.entidades;
+
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -6,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document(collection = "clientes")
 
-public class Cliente extends Usuario{
+public class Cliente extends Usuario {
 
     private String metodoDePagoPreferido;
     private String direccion;
@@ -32,4 +33,3 @@ public class Cliente extends Usuario{
         this.historialDePedidos = historialDePedidos;
     }
 }
-

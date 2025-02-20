@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping ("/api/ v1")
+@RequestMapping("/api/ v1")
 
 public class IniciarSesionTenderoControlador {
 
@@ -22,23 +22,21 @@ public class IniciarSesionTenderoControlador {
     public IniciarSesionTenderoControlador(IniciarSesionTenderoService iniciarSesionTenderoService) {
         this.iniciarSesionTenderoService = iniciarSesionTenderoService;
     }
+
     @PostMapping(value = "/iniciar-sesion", headers = "Accept=application/json")
-    public ResponseEntity<?> iniciarSesionControlador (@RequestBody IniciarSesionDto iniciarSesionDto) {
+    public ResponseEntity<?> iniciarSesionControlador(@RequestBody IniciarSesionDto iniciarSesionDto) {
 
         try {
             Tendero tendero = iniciarSesionTenderoService.ejecutar(iniciarSesionDto);
 
-            if (tendero == null){
+            if (tendero == null) {
                 return new ResponseEntity<>("Crendenciales incorrectas", HttpStatus.UNAUTHORIZED);
             }
             return new ResponseEntity<>(tendero, HttpStatus.OK);
-            }
-        catch (Exception exception){
+        } catch (Exception exception) {
             String mensajeDeError = "Hubo un error al tratar de iniciar sesion" + exception.getMessage();
 
             return new ResponseEntity<>(mensajeDeError, HttpStatus.INTERNAL_SERVER_ERROR);
-
-        }
         }
     }
-
+}

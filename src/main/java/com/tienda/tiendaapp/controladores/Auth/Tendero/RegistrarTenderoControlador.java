@@ -12,30 +12,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping ("/ap1/v1")
+@RequestMapping("/ap1/v1")
+
 public class RegistrarTenderoControlador {
 
     private RegistrarTenderoService registrarTenderoService;
 
     @Autowired
-    public RegistrarTenderoControlador (RegistrarTenderoService registrarTenderoService) {
-        this.registrarTenderoService= registrarTenderoService;
+    public RegistrarTenderoControlador(RegistrarTenderoService registrarTenderoService) {
+        this.registrarTenderoService = registrarTenderoService;
 
-}
-@PostMapping (value ="/tenderos" , headers = "Accept=application/json")
-public ResponseEntity<?> crearUsurarioControlador (@RequestBody CrearTenderoDto crearTenderoDto){
+    }
+
+    @PostMapping(value = "/tenderos", headers = "Accept=application/json")
+    public ResponseEntity<?> crearUsurarioControlador(@RequestBody CrearTenderoDto crearTenderoDto) {
 
         try {
             System.out.println("Datos recibidos" + crearTenderoDto.toString());
             Tendero tendero = registrarTenderoService.ejecutar(crearTenderoDto);
             return new ResponseEntity<>(tendero, HttpStatus.OK);
 
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             String mensajeDeError = "Hubo un error al tratar de crear el usuario" + exception.getMessage();
 
             return new ResponseEntity<>(mensajeDeError, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-}
+    }
 }

@@ -1,4 +1,5 @@
 package com.tienda.tiendaapp.dtos;
+
 import lombok.Data;
 
 @Data
@@ -93,4 +94,3 @@ public class CrearDomiciliarioDto {
         this.estadoDeDisponibilidad = estadoDeDisponibilidad;
     }
 }
-

@@ -1,4 +1,5 @@
 package com.tienda.tiendaapp.controladores.Auth.Domiciliario;
+
 import com.tienda.tiendaapp.dtos.IniciarSesionDto;
 import com.tienda.tiendaapp.entidades.Domiciliario;
 import com.tienda.tiendaapp.servicios.Domiciliario.IniciarSesionDomiciliarioService;
@@ -18,7 +19,7 @@ public class IniciarSesionDomiciliarioControlador {
     private final IniciarSesionDomiciliarioService iniciarSesionDomiciliarioService;
 
     @Autowired
-    public  IniciarSesionDomiciliarioControlador(IniciarSesionDomiciliarioService iniciarSesionDomiciliarioService) {
+    public IniciarSesionDomiciliarioControlador(IniciarSesionDomiciliarioService iniciarSesionDomiciliarioService) {
         this.iniciarSesionDomiciliarioService = iniciarSesionDomiciliarioService;
     }
 
@@ -32,9 +33,8 @@ public class IniciarSesionDomiciliarioControlador {
                 return new ResponseEntity<>("Credenciales incorrectas", HttpStatus.UNAUTHORIZED);
             }
             return new ResponseEntity<>(domiciliario, HttpStatus.OK);
-        }
-        catch (Exception exception) {
-            String mensajeDeError = "Hubo un error al tratar de iniciar sesion "+ exception.getMessage();
+        } catch (Exception exception) {
+            String mensajeDeError = "Hubo un error al tratar de iniciar sesion " + exception.getMessage();
 
             return new ResponseEntity<>(mensajeDeError, HttpStatus.INTERNAL_SERVER_ERROR);
         }

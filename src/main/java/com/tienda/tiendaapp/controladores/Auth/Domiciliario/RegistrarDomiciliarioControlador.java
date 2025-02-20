@@ -1,4 +1,5 @@
 package com.tienda.tiendaapp.controladores.Auth.Domiciliario;
+
 import com.tienda.tiendaapp.entidades.Domiciliario;
 import com.tienda.tiendaapp.servicios.Domiciliario.RegistrarDomiciliarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,9 @@ public class RegistrarDomiciliarioControlador {
 
         try {
             System.out.println("Datos recibidos " + crearDomiciliarioDto.toString());
-            Domiciliario domiciliario =registrarDomiciliarioService.ejecutar(crearDomiciliarioDto);
+            Domiciliario domiciliario = registrarDomiciliarioService.ejecutar(crearDomiciliarioDto);
             return new ResponseEntity<>(domiciliario, HttpStatus.OK);
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             String mensajeDeError = "Hubo un error al tratar de crear el usuario" + exception.getMessage();
 
             return new ResponseEntity<>(mensajeDeError, HttpStatus.INTERNAL_SERVER_ERROR);
