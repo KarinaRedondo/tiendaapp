@@ -1,5 +1,4 @@
-package com.tienda.tiendaapp.servicios.Auth;
-
+package com.tienda.tiendaapp.servicios.Cliente;
 import com.tienda.tiendaapp.dtos.CrearClienteDto;
 import com.tienda.tiendaapp.entidades.Cliente;
 import com.tienda.tiendaapp.repositorios.ClienteRepositorio;
@@ -10,7 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+
 public class RegistrarClienteService {
+
     @Autowired
     private ClienteRepositorio clienteRepositorio;
 
@@ -24,7 +25,6 @@ public class RegistrarClienteService {
         if (clienteExistente.isPresent()) {
             throw new IllegalArgumentException("El correo ya está registrado.");
         }
-
         // Convertir DTO a entidad Cliente
         Cliente cliente = new Cliente();
         cliente.setRol(crearClienteDto.getRol());

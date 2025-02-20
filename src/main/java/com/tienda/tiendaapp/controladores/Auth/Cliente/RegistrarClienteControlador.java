@@ -1,8 +1,7 @@
 package com.tienda.tiendaapp.controladores.Auth.Cliente;
-
 import com.tienda.tiendaapp.dtos.CrearClienteDto;
 import com.tienda.tiendaapp.entidades.Cliente;
-import com.tienda.tiendaapp.servicios.Auth.RegistrarClienteService;
+import com.tienda.tiendaapp.servicios.Cliente.RegistrarClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
+
 public class RegistrarClienteControlador {
+
     private RegistrarClienteService registrarClienteService;
 
     @Autowired
@@ -30,7 +31,6 @@ public class RegistrarClienteControlador {
         } catch (Exception exception) {
             String mensajeDeError = "Hubo un error al tratar de crear el usuario" + exception.getMessage();
             return new ResponseEntity<>(mensajeDeError, HttpStatus.INTERNAL_SERVER_ERROR);
-
         }
     }
 }

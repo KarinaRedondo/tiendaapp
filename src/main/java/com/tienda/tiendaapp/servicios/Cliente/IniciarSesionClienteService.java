@@ -1,5 +1,4 @@
-package com.tienda.tiendaapp.servicios.Auth;
-
+package com.tienda.tiendaapp.servicios.Cliente;
 import com.tienda.tiendaapp.dtos.IniciarSesionDto;
 import com.tienda.tiendaapp.entidades.Cliente;
 import com.tienda.tiendaapp.repositorios.ClienteRepositorio;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+
 public class IniciarSesionClienteService {
 
     @Autowired
@@ -32,7 +32,6 @@ public class IniciarSesionClienteService {
         if (!passwordEncoder.matches(iniciarSesionDto.getPassword(), cliente.getPassword())) {
             throw new IllegalArgumentException("Correo o contraseña incorrectos.");
         }
-
         // Si todo está bien, devolver el cliente
         return cliente;
     }

@@ -1,4 +1,5 @@
 package com.tienda.tiendaapp.servicios.Tendero;
+import com.tienda.tiendaapp.dtos.IniciarSesionDto;
 import com.tienda.tiendaapp.entidades.Tendero;
 import com.tienda.tiendaapp.repositorios.TenderoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class IniciarSesionTenderoService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public Tendero ejecutar(String correo, String password) {
-        Optional<Tendero> tenderoOptional = tenderoRepositorio.findByCorreo(correo);
+    public Tendero ejecutar(IniciarSesionDto iniciarSesionDto) {
+        Optional<Tendero> tenderoOptional = tenderoRepositorio.findByCorreo(iniciarSesionDto.getCorreo());
 
         if (tenderoOptional.isEmpty()) {
             throw  new IllegalArgumentException("Correo o contraseña incorrectos.");
@@ -25,7 +26,7 @@ public class IniciarSesionTenderoService {
 
         Tendero tendero = tenderoOptional.get();
 
-        if (!passwordEncoder.matches(password, tendero.getPassword())) {
+        if (!passwordEncoder.matches(iniciarSesionDto.getPassword(), tendero.getPassword())) {
             throw new IllegalArgumentException("Correo o contraseña incorrectos.");
         }
         return tendero;

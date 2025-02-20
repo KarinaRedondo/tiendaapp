@@ -1,4 +1,5 @@
 package com.tienda.tiendaapp.servicios.Domiciliario;
+import com.tienda.tiendaapp.dtos.IniciarSesionDto;
 import com.tienda.tiendaapp.entidades.Domiciliario;
 import com.tienda.tiendaapp.repositorios.DomiciliarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class IniciarSesionDomiciliarioService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public Domiciliario ejecutar(String correo, String password) {
-        Optional<Domiciliario> domiciliarioOptional = domiciliarioRepositorio.findByCorreo(correo);
+    public Domiciliario ejecutar(IniciarSesionDto iniciarSesionDto) {
+        Optional<Domiciliario> domiciliarioOptional = domiciliarioRepositorio.findByCorreo(iniciarSesionDto.getCorreo());
 
         if (domiciliarioOptional.isEmpty()) {
             throw new IllegalArgumentException("Correo o contraseña incorrectos.");
@@ -25,7 +26,7 @@ public class IniciarSesionDomiciliarioService {
 
         Domiciliario domiciliario = domiciliarioOptional.get();
 
-        if (!passwordEncoder.matches(password, domiciliario.getPassword())) {
+        if (!passwordEncoder.matches(iniciarSesionDto.getPassword(), domiciliario.getPassword())) {
             throw new IllegalArgumentException("Correo o contraseña incorrectos.");
         }
         return domiciliario;

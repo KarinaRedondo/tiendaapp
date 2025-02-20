@@ -5,6 +5,11 @@ import lombok.Data;
 
 public class CrearDomiciliarioDto {
 
+    private String rol;
+    private String nombreCompleto;
+    private String correo;
+    private String password;
+    private String telefono;
     private String tipoDeVehiculo;
     private String placaDelVehiculo;
     private int entregasTotales;
