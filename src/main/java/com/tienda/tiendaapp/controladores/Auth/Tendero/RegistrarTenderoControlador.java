@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ap1/v1")
+@RequestMapping("/ap1/v1/tendero")
 
 public class RegistrarTenderoControlador {
 

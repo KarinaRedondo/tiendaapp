@@ -25,6 +25,14 @@ public class Pedidos {
     private String cliente;
     private String domiciliario;
 
+    public String getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(String idPedido) {
+        this.idPedido = idPedido;
+    }
+
     public String getTendero() {
         return tendero;
     }

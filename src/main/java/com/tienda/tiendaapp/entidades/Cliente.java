@@ -13,6 +13,10 @@ public class Cliente extends Usuario {
     private String direccion;
     private String[] historialDePedidos;
 
+    public String getMetodoDePagoPreferido() {
+        return metodoDePagoPreferido;
+    }
+
     public void setMetodoDePagoPreferido(String metodoDePagoPreferido) {
         this.metodoDePagoPreferido = metodoDePagoPreferido;
     }

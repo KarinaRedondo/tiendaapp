@@ -16,6 +16,14 @@ public class Calificacion {
     private String comentarios;
     private String fecha;
 
+    public String getIdCalificacion() {
+        return idCalificacion;
+    }
+
+    public void setIdCalificacion(String idCalificacion) {
+        this.idCalificacion = idCalificacion;
+    }
+
     public int getCalificacionDomiciliario() {
         return calificacionDomiciliario;
     }
