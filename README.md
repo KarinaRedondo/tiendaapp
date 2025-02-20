@@ -35,7 +35,7 @@ En este proyecto, hemos utilizado uno de los principios SOLID, específicamente 
 - **Servicios**: Contienen la lógica de negocio de la aplicación.
 
 ## Arquitectura por Capas 
-El sistema de gestión de eventos sigue una arquitectura por capas, lo que proporciona una estructura organizada y modular para el desarrollo de la aplicación. Cada capa tiene una responsabilidad específica y se comunica con las capas adyacentes de manera controlada, lo que promueve la escalabilidad, el mantenimiento y la reutilización del código. 
+El sistema de Comercio Local sigue una arquitectura por capas, lo que proporciona una estructura organizada y modular para el desarrollo de la aplicación. Cada capa tiene una responsabilidad específica y se comunica con las capas adyacentes de manera controlada, lo que promueve la escalabilidad, el mantenimiento y la reutilización del código. 
 ### Capas Principales: 
 1. **Controladores (Controllers)**: - Responsabilidad: Manejar las solicitudes HTTP y las respuestas asociadas. - Interacción: Se comunican con los servicios para realizar operaciones de negocio y devolver los resultados adecuados a los clientes. 
 2. **Servicios (Services)**: - Responsabilidad: Contener la lógica de negocio de la aplicación. - Interacción: Utilizan los repositorios para acceder a los datos persistentes y aplicar las reglas de negocio requeridas. 
