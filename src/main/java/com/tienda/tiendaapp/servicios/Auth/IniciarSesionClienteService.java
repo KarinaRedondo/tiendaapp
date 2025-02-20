@@ -1,5 +1,6 @@
 package com.tienda.tiendaapp.servicios.Auth;
 
+import com.tienda.tiendaapp.dtos.IniciarSesionDto;
 import com.tienda.tiendaapp.entidades.Cliente;
 import com.tienda.tiendaapp.repositorios.ClienteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,9 @@ public class IniciarSesionClienteService {
     @Autowired
     private PasswordEncoder passwordEncoder; // Inyección del encoder
 
-    public Cliente ejecutar(String correo, String password) {
+    public Cliente ejecutar(IniciarSesionDto iniciarSesionDto) {
         // Buscar el cliente por correo
-        Optional<Cliente> clienteOptional = clienteRepositorio.findByCorreo(correo);
+        Optional<Cliente> clienteOptional = clienteRepositorio.findByCorreo(iniciarSesionDto.getCorreo());
 
         if (clienteOptional.isEmpty()) {
             throw new IllegalArgumentException("Correo o contraseña incorrectos.");
@@ -28,7 +29,7 @@ public class IniciarSesionClienteService {
         Cliente cliente = clienteOptional.get();
 
         // Verificar si la contraseña coincide
-        if (!passwordEncoder.matches(password, cliente.getPassword())) {
+        if (!passwordEncoder.matches(iniciarSesionDto.getPassword(), cliente.getPassword())) {
             throw new IllegalArgumentException("Correo o contraseña incorrectos.");
         }
 
