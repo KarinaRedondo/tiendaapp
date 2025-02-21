@@ -23,7 +23,7 @@ public class RegistrarClienteControlador {
         this.registrarClienteService = registrarClienteService;
     }
 
-    @PostMapping(value = "/clientes", headers = "Accept=application/json")
+    @PostMapping(value = "/registrarse", headers = "Accept=application/json")
     public ResponseEntity<?> crearUsuarioControlador(@RequestBody CrearClienteDto crearClienteDto) {
         try {
             System.out.println("Datos recibidos: " + crearClienteDto.toString());

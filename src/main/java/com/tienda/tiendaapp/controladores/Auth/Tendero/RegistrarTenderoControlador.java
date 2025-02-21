@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ap1/v1/tendero")
+@RequestMapping("/api/v1/tendero")
 
 public class RegistrarTenderoControlador {
 
@@ -24,7 +24,7 @@ public class RegistrarTenderoControlador {
 
     }
 
-    @PostMapping(value = "/tenderos", headers = "Accept=application/json")
+    @PostMapping(value = "/registrarse", headers = "Accept=application/json")
     public ResponseEntity<?> crearUsurarioControlador(@RequestBody CrearTenderoDto crearTenderoDto) {
 
         try {
