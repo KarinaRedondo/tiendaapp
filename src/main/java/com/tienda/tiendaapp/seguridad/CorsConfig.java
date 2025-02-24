@@ -14,7 +14,7 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/v1/tendero/registrarse")
+                registry.addMapping("/api/v1/registrarse")
                         .allowedOrigins("*")
                         .allowedMethods("*")
                         .exposedHeaders("*");

@@ -59,9 +59,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests() // Toda petición http debe ser autorizada
-                .requestMatchers("/api/v1/tendero/registrarse").permitAll()
-                .requestMatchers("/api/v1/cliente/registrarse").permitAll()
-                .requestMatchers("/api/v1/domiciliario/registrarse").permitAll()
+                .requestMatchers("/api/v1/registrarse").permitAll()
                 .requestMatchers("/api/v1/iniciar-sesion").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/v1/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
