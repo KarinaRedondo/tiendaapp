@@ -22,7 +22,7 @@ public class CustomUsersDetailsService implements UserDetailsService {
     // Método para traernos un usuario con todos sus datos por medio de su correo electrónico
     @Override
     public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
-        Usuario usuarios = usuariosRepo.findByCorreo(correo).orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+        Usuario usuarios = usuariosRepo.findByCorreo(correo).orElseThrow(() -> new UsernameNotFoundException("CrearUsuarioDto no encontrado"));
         return new User(usuarios.getCorreo(), usuarios.getPassword(), new ArrayList<>());
     }
 }

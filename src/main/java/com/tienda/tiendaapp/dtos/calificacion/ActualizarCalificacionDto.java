@@ -1,15 +1,11 @@
-package com.tienda.tiendaapp.entidades;
+package com.tienda.tiendaapp.dtos.calificacion;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document(collection = "calificaciones")
 
-public class Calificacion {
+public class ActualizarCalificacionDto {
 
-    @Id
     private String id;
     private String idpedido;
     private String idCliente;
