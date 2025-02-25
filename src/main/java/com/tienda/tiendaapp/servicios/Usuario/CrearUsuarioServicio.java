@@ -6,6 +6,7 @@ import com.tienda.tiendaapp.repositorios.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Service
 public class CrearUsuarioServicio {
 
         private final UsuarioRepositorio usuarioRepositorio;
@@ -21,7 +22,7 @@ public class CrearUsuarioServicio {
             usuario.setCorreo(crearUsuarioDto.getCorreo());
             usuario.setContraseña(crearUsuarioDto.getContraseña());
             usuario.setRol(crearUsuarioDto.getRol());
-            usuario.setActivo(crearUsuarioDto.getActivo());
+            usuario.setEstado(crearUsuarioDto.getEstado());
 
             return usuarioRepositorio.save(usuario);
         }

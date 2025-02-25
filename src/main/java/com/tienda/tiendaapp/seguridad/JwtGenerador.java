@@ -5,9 +5,10 @@ import org.springframework.security.core.Authentication;
 import java.util.Date;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import org.springframework.stereotype.Service;
 
 
-
+@Service
 public class JwtGenerador {
 
     //Método para crear un token por medio de la authentication

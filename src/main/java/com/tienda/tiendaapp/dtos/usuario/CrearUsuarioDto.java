@@ -2,7 +2,7 @@ package com.tienda.tiendaapp.dtos.usuario;
 
 import lombok.Data;
 
-@Data
+
 
 public class CrearUsuarioDto {
 
@@ -10,7 +10,7 @@ public class CrearUsuarioDto {
     private String correo;
     private String contraseña;
     private String rol;
-    private String activo;
+    public Boolean Estado;
 
     public String getNombreCompleto() {
         return nombreCompleto;
@@ -44,11 +44,11 @@ public class CrearUsuarioDto {
         this.rol = rol;
     }
 
-    public String getActivo() {
-        return activo;
+    public Boolean getEstado() {
+        return Estado;
     }
 
-    public void setActivo(String activo) {
-        this.activo = activo;
+    public void setEstado(Boolean estado) {
+        Estado = estado;
     }
 }

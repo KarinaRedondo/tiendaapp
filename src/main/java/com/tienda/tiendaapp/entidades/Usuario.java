@@ -1,11 +1,10 @@
 package com.tienda.tiendaapp.entidades;
 
-import lombok.Data;
-import lombok.Getter;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Data
+
 @Document(collection = "usuarios")
 
 public class Usuario {
@@ -16,7 +15,7 @@ public class Usuario {
     private String correo;
     private String contraseña;
     private String rol;
-    private String activo;
+    private Boolean estado;
 
     public String getId() {
         return id;
@@ -58,11 +57,11 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public String getActivo() {
-        return activo;
+    public Boolean getEstado() {
+        return estado;
     }
 
-    public void setActivo(String activo) {
-        this.activo = activo;
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 }
