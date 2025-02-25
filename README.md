@@ -6,7 +6,7 @@
 
 ## Descripción
 
-Se desarrollará un sistema que permitirá gestionar  y que conecte a tenderos, clientes y domiciliarios. Está desarrollado en Spring Boot y utiliza MongoDB como base de datos en el backend y React con typescripts en el frontend. Los tenderos pueden gestionar pedidos en tiempo real. Los clientes navegan, compran, llevan un seguimiento de pedidos fácilmente y califican productos. Por otro lado,  los domiciliarios gestionan y entregan pedidos de forma eficiente.
+El sistema es una plataforma de comercio local desarrollada con Spring Boot y basada en microservicios para asegurar escalabilidad y mantenimiento. Facilita la interacción entre clientes, tenderos y repartidores mediante una arquitectura segura que utiliza Spring Security y autenticación JWT. Permite gestionar usuarios, tiendas, vehículos, pedidos, calificaciones, ganancias y ventas, mejorando la comunicación y la eficiencia en la entrega de productos a domicilio.
 
 ## Tecnologias
 - React
@@ -14,8 +14,30 @@ Se desarrollará un sistema que permitirá gestionar  y que conecte a tenderos, 
 - Spring Boot
 - MongoDB
 
+## Dependencias
+- ### Spring Boot
+    - **Spring Data MongoDB** → Permite interactuar con MongoDB de forma sencilla.
+    - **Spring Data Reactive MongoDB** → Soporta procesamiento reactivo para MongoDB.
+    - **Spring Web** → Permite construir APIs REST con Spring MVC.
+    - **Spring Security** → Proporciona autenticación y autorización.
+    - **Spring Boot DevTools** → Facilita el desarrollo con recarga automática.
+
+- ### Desarrollo
+    - **Lombok** → Reduce código repetitivo en entidades y DTOs.
+    - **JJWT** → Maneja autenticación con JSON Web Tokens (JWT).
+
+- ### Pruebas
+    - **Spring Boot Starter Test** → Proporciona herramientas para pruebas con JUnit.
+    - **Reactor Test** → Permite pruebas en aplicaciones reactivas.
+    - **Spring Security Test** → Facilita la prueba de seguridad en la aplicación.
+
+- ### Build y Compilación
+    - **Maven Compiler Plugin** → Compila el código con soporte para Java 17.
+    - **Spring Boot Maven Plugin** → Empaqueta y ejecuta la aplicación con Maven.
+
 ## Requisitos
 -   Node
+-   Java 17
 
 ## Cómo empezar
 1. Clona este repositorio.
@@ -48,35 +70,3 @@ El sistema de Comercio Local sigue una arquitectura por capas, lo que proporcion
 - **Escalabilidad**: La arquitectura por capas permite agregar nuevas funcionalidades de manera modular sin afectar otras partes del sistema. 
 - **Reutilización del Código**: Los componentes están diseñados para ser independientes y pueden ser reutilizados en diferentes partes de la aplicación o en proyectos futuros. 
 - **Facilita el Testing**: Las capas separadas permiten una mejor organización de las pruebas unitarias y de integración, lo que facilita la identificación y corrección de errores. Esta arquitectura proporciona una base sólida para el desarrollo del sistema de gestión de eventos, promoviendo la robustez, la flexibilidad y la mantenibilidad del código.
-
-
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
