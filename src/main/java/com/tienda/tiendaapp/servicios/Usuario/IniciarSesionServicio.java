@@ -34,7 +34,6 @@ public class IniciarSesionServicio {
         if (!usuarioOpt.isPresent()){
             logger.error("Usuario no encontrado para el correo: {}", correo);
             throw new IllegalArgumentException("Usuario no encontrado para el correo proporcionado.");
-
         }
 
         Usuario usuarioEncontrado = usuarioOpt.get();
@@ -42,7 +41,7 @@ public class IniciarSesionServicio {
         if (contraseña.equals(usuarioEncontrado.getContraseña())) {
             logger.info("Usuario autenticado exitosamente: {}", usuarioEncontrado.getNombreCompleto());
             return usuarioEncontrado;
-        }else {
+        }  else {
             logger.error("Contraseña incorrecta para el usuario {}", correo);
             throw new IllegalArgumentException("Contraseña incorrecta");
         }

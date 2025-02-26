@@ -11,7 +11,7 @@ public class ActualizarUsuarioDto {
     private String correo;
     private String contraseña;
     private String rol;
-    private String activo;
+    private boolean estado;
 
     public String getId() {
         return id;
@@ -53,11 +53,11 @@ public class ActualizarUsuarioDto {
         this.rol = rol;
     }
 
-    public String getActivo() {
-        return activo;
+    public boolean getEstado() {
+        return estado;
     }
 
-    public void setActivo(String activo) {
-        this.activo = activo;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 }
