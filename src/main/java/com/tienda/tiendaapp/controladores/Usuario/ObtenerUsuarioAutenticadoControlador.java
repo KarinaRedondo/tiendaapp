@@ -24,7 +24,7 @@ public class ObtenerUsuarioAutenticadoControlador {
         this.obtenerUsuarioAutenticadoServicio = obtenerUsuarioAutenticadoServicio;
     }
 
-    @GetMapping(value = "/{id}", headers = "Accept=application/json")
+    @GetMapping(value = "/obtener/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> obtenerUsuarioPorId(@PathVariable String id) {
 
         try {
