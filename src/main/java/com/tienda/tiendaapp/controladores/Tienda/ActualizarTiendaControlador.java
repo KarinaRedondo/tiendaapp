@@ -31,7 +31,7 @@ public class ActualizarTiendaControlador {
             return new ResponseEntity<>(tiendaActualizada, HttpStatus.OK);
         }
         catch (Exception exception) {
-            String mensajeDeError = "Hubo un error al tratar de actualiar la tienda: "+ exception.getMessage();
+            String mensajeDeError = "Hubo un error al tratar de actualizar la tienda: "+ exception.getMessage();
             return new ResponseEntity<>(mensajeDeError, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
