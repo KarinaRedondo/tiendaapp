@@ -27,7 +27,7 @@ public class ObtenerVehiculosDelDomiciliarioControlador {
 
     @GetMapping(value = "/obtenerVehiculos-domiciliario/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> obtenervehiculos(@PathVariable String id) {
-        Optional<Vehiculo> vehiculos = obtenerVehiculosDelDomiciliarioServicio.obtenerVehiculosPorIdDomiciliario(id);
+        List<Vehiculo> vehiculos = obtenerVehiculosDelDomiciliarioServicio.obtenerVehiculosPorIdDomiciliario(id);
 
         if (vehiculos.isEmpty()) {
             return new ResponseEntity<>("No se pueden obtener los vehiculos para este domiciliario", HttpStatus.NOT_FOUND);

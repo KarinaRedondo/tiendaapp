@@ -6,20 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 
-public class ObtenerVehiculosDelDomiciliarioServicio {
+public class ListarVehiculoServicio {
 
     private final VehiculoRepositorio vehiculoRepositorio;
 
     @Autowired
-    public ObtenerVehiculosDelDomiciliarioServicio(VehiculoRepositorio vehiculoRepositorio) {
+    public  ListarVehiculoServicio(VehiculoRepositorio vehiculoRepositorio) {
         this.vehiculoRepositorio = vehiculoRepositorio;
     }
 
-    public List<Vehiculo> obtenerVehiculosPorIdDomiciliario(String id) {
-        return vehiculoRepositorio.findByIdDomiciliario(id);
+    public List<Vehiculo> listarVehiculos() {
+        return vehiculoRepositorio.findAll();
     }
 }
