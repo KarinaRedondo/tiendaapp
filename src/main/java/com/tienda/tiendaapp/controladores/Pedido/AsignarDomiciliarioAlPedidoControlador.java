@@ -23,7 +23,7 @@ public class AsignarDomiciliarioAlPedidoControlador {
         this.asignarDomiciliarioAlPedidoServicio =  asignarDomiciliarioAlPedidoServicio;
     }
 
-    @PutMapping(value = "/asignar-domicliario/{id}", headers = "Accept=application/json")
+    @PutMapping(value = "/asignar-domiciliario/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> asignarDomiciliario(@PathVariable String id, @RequestBody Map<String, String> request) {
 
         try {
