@@ -14,7 +14,7 @@ public class ActualizarPedidoDto {
     private double precioDomicilio;
     private String estado;
     private String idDomiciliario;
-    private String gananciaDomiciliario;
+    private double gananciaDomiciliario;
     private String comentariosTendero;
     private String fechaCreacion;
     private String fechaExpiracion;
@@ -83,11 +83,11 @@ public class ActualizarPedidoDto {
         this.idDomiciliario = idDomiciliario;
     }
 
-    public String getGananciaDomiciliario() {
+    public double getGananciaDomiciliario() {
         return gananciaDomiciliario;
     }
 
-    public void setGananciaDomiciliario(String gananciaDomiciliario) {
+    public void setGananciaDomiciliario(double gananciaDomiciliario) {
         this.gananciaDomiciliario = gananciaDomiciliario;
     }
 
