@@ -62,6 +62,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests() // Toda petición http debe ser autorizada
                 .requestMatchers("/api/v1/usuarios/registrarse").permitAll()
                 .requestMatchers("/api/v1/usuarios/iniciar-sesion").permitAll()
+                .requestMatchers("/api/v1/pedidos/actualizar").permitAll() // Permitir acceso sin autenticación
                 .requestMatchers(HttpMethod.POST, "/api/v1/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
