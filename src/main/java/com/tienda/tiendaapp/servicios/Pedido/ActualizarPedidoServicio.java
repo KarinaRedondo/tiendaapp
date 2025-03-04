@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
+
 public class ActualizarPedidoServicio {
 
     private final PedidoRepositorio pedidoRepositorio;
@@ -38,7 +39,7 @@ public class ActualizarPedidoServicio {
         Pedido pedidoEncontrado = pedidoRepositorio.findById(actualizarPedidoDto.getId())
                 .orElseThrow(() -> new RuntimeException("Pedido no encontrado con ID: " + actualizarPedidoDto.getId()));
 
-        // Actualizar los datos del pedido
+        // Actualizar datos del pedido
         pedidoEncontrado.setIdCliente(actualizarPedidoDto.getIdCliente());
         pedidoEncontrado.setIdTienda(actualizarPedidoDto.getIdTienda());
         pedidoEncontrado.setDescripcionPedido(actualizarPedidoDto.getDescripcionPedido());
@@ -51,6 +52,9 @@ public class ActualizarPedidoServicio {
         pedidoEncontrado.setFechaCreacion(actualizarPedidoDto.getFechaCreacion());
         pedidoEncontrado.setFechaExpiracion(actualizarPedidoDto.getFechaExpiracion());
 
+        // Guardar pedido antes de actualizar otros valores
+        pedidoRepositorio.save(pedidoEncontrado);
+
         // Si el pedido está en estado "Entregado", actualizar tienda, historial y domiciliario
         if ("Entregado".equals(pedidoEncontrado.getEstado())) {
             actualizarTienda(pedidoEncontrado);
@@ -58,14 +62,17 @@ public class ActualizarPedidoServicio {
             actualizarGananciaDomiciliario(pedidoEncontrado);
         }
 
-        return pedidoRepositorio.save(pedidoEncontrado);
+        return pedidoEncontrado;
     }
 
     private void actualizarTienda(Pedido pedido) {
         Tienda tienda = tiendaRepositorio.findById(pedido.getIdTienda())
                 .orElseThrow(() -> new RuntimeException("Tienda no encontrada con ID: " + pedido.getIdTienda()));
 
-        tienda.setTotalVentas(Optional.ofNullable(tienda.getTotalVentas()).orElse(0.0) + pedido.getMontoTotal());
+        // Acumular el monto total de la tienda
+        double totalVentasActual = Optional.ofNullable(tienda.getTotalVentas()).orElse(0.0);
+        tienda.setTotalVentas(totalVentasActual + pedido.getMontoTotal());
+
         tiendaRepositorio.save(tienda);
     }
 
@@ -83,13 +90,19 @@ public class ActualizarPedidoServicio {
                     return nuevoHistorial;
                 });
 
-        historial.setVentasDiarias(historial.getVentasDiarias() + pedido.getMontoTotal());
-        historial.setVentasSemanales(historial.getVentasSemanales() + pedido.getMontoTotal());
-        historial.setVentasMensuales(historial.getVentasMensuales() + pedido.getMontoTotal());
+        // Acumular ventas en todas las categorías
+        historial.setVentasDiarias(Optional.ofNullable(historial.getVentasDiarias()).orElse(0.0) + pedido.getMontoTotal());
+        historial.setVentasSemanales(Optional.ofNullable(historial.getVentasSemanales()).orElse(0.0) + pedido.getMontoTotal());
+        historial.setVentasMensuales(Optional.ofNullable(historial.getVentasMensuales()).orElse(0.0) + pedido.getMontoTotal());
+
         historialVentaRepositorio.save(historial);
     }
 
     private void actualizarGananciaDomiciliario(Pedido pedido) {
+        if (pedido.getIdDomiciliario() == null) {
+            return; // No hay domiciliario asignado, no se actualiza nada
+        }
+
         String idGanancia = pedido.getIdDomiciliario() + "_" + pedido.getFechaCreacion();
         GananciaDomiciliario ganancia = gananciaDomiciliarioRepositorio.findById(idGanancia)
                 .orElseGet(() -> {
@@ -102,8 +115,11 @@ public class ActualizarPedidoServicio {
                     return nuevaGanancia;
                 });
 
-        ganancia.setGanancia(ganancia.getGanancia() + pedido.getPrecioDomicilio());
+        // Acumular la ganancia del domiciliario
+        ganancia.setGanancia(Optional.ofNullable(ganancia.getGanancia()).orElse(0.0) + pedido.getPrecioDomicilio());
+
         gananciaDomiciliarioRepositorio.save(ganancia);
     }
 }
+
 
