@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-
 public class ActualizarPedidoServicio {
 
     private final PedidoRepositorio pedidoRepositorio;
@@ -70,8 +69,7 @@ public class ActualizarPedidoServicio {
                 .orElseThrow(() -> new RuntimeException("Tienda no encontrada con ID: " + pedido.getIdTienda()));
 
         // Acumular el monto total de la tienda
-        double totalVentasActual = Optional.ofNullable(tienda.getTotalVentas()).orElse(0.0);
-        tienda.setTotalVentas(totalVentasActual + pedido.getMontoTotal());
+        tienda.setTotalVentas(Optional.ofNullable(tienda.getTotalVentas()).orElse(0.0) + pedido.getMontoTotal());
 
         tiendaRepositorio.save(tienda);
     }
@@ -84,9 +82,6 @@ public class ActualizarPedidoServicio {
                     nuevoHistorial.setId(idHistorial);
                     nuevoHistorial.setIdTienda(pedido.getIdTienda());
                     nuevoHistorial.setFecha(pedido.getFechaCreacion());
-                    nuevoHistorial.setVentasDiarias(0.0);
-                    nuevoHistorial.setVentasSemanales(0.0);
-                    nuevoHistorial.setVentasMensuales(0.0);
                     return nuevoHistorial;
                 });
 
@@ -111,12 +106,11 @@ public class ActualizarPedidoServicio {
                     nuevaGanancia.setIdPedido(pedido.getId());
                     nuevaGanancia.setIdDomiciliario(pedido.getIdDomiciliario());
                     nuevaGanancia.setFechaEntrega(pedido.getFechaCreacion());
-                    nuevaGanancia.setGanancia(0.0);
                     return nuevaGanancia;
                 });
 
         // Acumular la ganancia del domiciliario
-        ganancia.setGanancia(Optional.ofNullable(ganancia.getGanancia()).orElse(0.0) + pedido.getPrecioDomicilio());
+        ganancia.setGanancia(Optional.ofNullable(ganancia.getGanancia()).orElse(0.0) + pedido.getGananciaDomiciliario());
 
         gananciaDomiciliarioRepositorio.save(ganancia);
     }
