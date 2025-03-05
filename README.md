@@ -8,7 +8,7 @@
 
 El sistema es una plataforma de comercio local desarrollada con Spring Boot y basada en microservicios para asegurar escalabilidad y mantenimiento. Facilita la interacción entre clientes, tenderos y repartidores mediante una arquitectura segura que utiliza Spring Security y autenticación JWT. Permite gestionar usuarios, tiendas, vehículos, pedidos, calificaciones, ganancias y ventas, mejorando la comunicación y la eficiencia en la entrega de productos a domicilio.
 
-## Tecnologias
+## Tecnologías
 - Spring Boot
 - MongoDB
 
