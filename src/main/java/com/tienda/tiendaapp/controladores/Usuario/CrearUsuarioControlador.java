@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1")
 
 public class CrearUsuarioControlador {
 
@@ -24,7 +24,7 @@ public class CrearUsuarioControlador {
         this.crearUsuarioServicio = crearUsuarioServicio;
     }
 
-    @PostMapping(value = "/crear-usuario", headers = "Accept=application/json")
+    @PostMapping(value = "/usuarios/crear-usuario", headers = "Accept=application/json")
     public ResponseEntity<?> crearUsuarioControlador(@RequestBody CrearUsuarioDto crearUsuarioDto) {
         try {
             System.out.println("Datos recibidos: "+ crearUsuarioDto.toString());

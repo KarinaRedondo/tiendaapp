@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/pedidos")
+@RequestMapping("/api/v1")
 
 public class FiltrarPedidosPorEstadoControlador {
 
@@ -23,7 +23,7 @@ public class FiltrarPedidosPorEstadoControlador {
         this.filtrarPedidosPorEstadoServicio = filtrarPedidosPorEstadoServicio;
     }
 
-    @GetMapping("/filtrar/estado/{estado}")
+    @GetMapping("/pedidos/filtrar/estado/{estado}")
     public ResponseEntity<List<Pedido>> obtenerPedidosPorEstado(@PathVariable String estado) {
         return ResponseEntity.ok(filtrarPedidosPorEstadoServicio.obtenerPedidosPorEstado(estado));
     }

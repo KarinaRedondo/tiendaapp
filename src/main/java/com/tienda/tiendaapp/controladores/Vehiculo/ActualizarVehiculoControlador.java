@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/vehiculos")
+@RequestMapping("/api/v1")
 
 public class ActualizarVehiculoControlador {
 
@@ -25,7 +25,7 @@ public ActualizarVehiculoControlador(ActualizarVehiculoServicio actualizarVehicu
     this.actualizarVehiculoServicio = actualizarVehiculoServicio;
 }
 
-@PutMapping(value = "/actualizar", headers = "Accept=application/json")
+@PutMapping(value = "/vehiculos/actualizar", headers = "Accept=application/json")
 public ResponseEntity<?> actualizarVehiculo(@RequestBody ActualizarVehiculoDto  actualizarVehiculoDto) {
 
     try{

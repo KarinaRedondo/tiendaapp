@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/pedidos")
+@RequestMapping("/api/v1")
 
 public class CrearPedidoControlador {
 
@@ -23,7 +23,7 @@ public class CrearPedidoControlador {
         this.crearPedidoServicio = crearPedidoServicio;
     }
 
-    @PostMapping(value = "/crear", headers = "Accept=application/json")
+    @PostMapping(value = "/pedidos/crear", headers = "Accept=application/json")
     public ResponseEntity<?> crearPedido(@RequestBody CrearPedidoDto crearPedidoDto){
 
         try {

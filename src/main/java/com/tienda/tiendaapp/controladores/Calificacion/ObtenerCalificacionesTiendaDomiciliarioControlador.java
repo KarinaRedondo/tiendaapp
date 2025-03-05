@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/calificaciones")
+@RequestMapping("/api/v1")
 
 public class ObtenerCalificacionesTiendaDomiciliarioControlador {
 
@@ -21,7 +21,7 @@ public class ObtenerCalificacionesTiendaDomiciliarioControlador {
         this.obtenerCalificacionesTiendaDomiciliarioServicio = obtenerCalificacionesTiendaDomiciliarioServicio;
     }
 
-    @GetMapping("/obtener/tienda/{idTienda}")
+    @GetMapping("/calificaciones/obtener/tienda/{idTienda}")
     public ResponseEntity<?> obtenerCalificacionTienda(@PathVariable String idTienda) {
         try {
             return new ResponseEntity<>(obtenerCalificacionesTiendaDomiciliarioServicio.obtenerCalificacionTienda(idTienda), HttpStatus.OK);

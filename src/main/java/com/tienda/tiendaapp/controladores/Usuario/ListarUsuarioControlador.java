@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1")
 
 public class ListarUsuarioControlador {
 
@@ -22,7 +22,7 @@ public class ListarUsuarioControlador {
         this.listarUsuarioServicio = listarUsuarioServicio;
     }
 
-    @GetMapping(value = "/listar", headers = "Accept=application/json")
+    @GetMapping(value = "/usuarios/listar", headers = "Accept=application/json")
     public ResponseEntity<?> listarUsuarioControlador() {
 
         try {

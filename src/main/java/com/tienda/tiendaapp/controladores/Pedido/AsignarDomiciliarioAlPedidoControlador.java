@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/pedidos")
+@RequestMapping("/api/v1")
 
 public class AsignarDomiciliarioAlPedidoControlador {
 
@@ -23,7 +23,7 @@ public class AsignarDomiciliarioAlPedidoControlador {
         this.asignarDomiciliarioAlPedidoServicio =  asignarDomiciliarioAlPedidoServicio;
     }
 
-    @PutMapping(value = "/asignar-domiciliario/{id}", headers = "Accept=application/json")
+    @PutMapping(value = "/pedidos/asignar-domiciliario/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> asignarDomiciliario(@PathVariable String id, @RequestBody Map<String, String> request) {
 
         try {

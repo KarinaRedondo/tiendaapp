@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1")
 
 public class ObtenerUsuarioAutenticadoControlador {
 
@@ -24,7 +24,7 @@ public class ObtenerUsuarioAutenticadoControlador {
         this.obtenerUsuarioAutenticadoServicio = obtenerUsuarioAutenticadoServicio;
     }
 
-    @GetMapping(value = "/obtener/{id}", headers = "Accept=application/json")
+    @GetMapping(value = "/usuarios/obtener/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> obtenerUsuarioPorId(@PathVariable String id) {
 
         try {

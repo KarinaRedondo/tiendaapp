@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/vehiculos")
+@RequestMapping("/api/v1")
 
 public class ObtenerVehiculosDelDomiciliarioControlador {
 
@@ -25,7 +25,7 @@ public class ObtenerVehiculosDelDomiciliarioControlador {
         this.obtenerVehiculosDelDomiciliarioServicio = obtenerVehiculosDelDomiciliarioServicio;
     }
 
-    @GetMapping(value = "/obtenerVehiculos-domiciliario/{id}", headers = "Accept=application/json")
+    @GetMapping(value = "/vehiculos/obtenerVehiculos-domiciliario/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> obtenervehiculos(@PathVariable String id) {
         List<Vehiculo> vehiculos = obtenerVehiculosDelDomiciliarioServicio.obtenerVehiculosPorIdDomiciliario(id);
 

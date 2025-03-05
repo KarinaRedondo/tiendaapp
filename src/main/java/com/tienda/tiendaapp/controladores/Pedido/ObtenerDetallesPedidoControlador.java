@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/pedidos")
+@RequestMapping("/api/v1")
 
 public class ObtenerDetallesPedidoControlador {
 
@@ -24,7 +24,7 @@ public class ObtenerDetallesPedidoControlador {
         this.obtenerDetallesPedidoServicio = obtenerDetallesPedidoServicio;
     }
 
-    @GetMapping(value = "/obtener-detallesPedido/{id}", headers = "Accept=application/json")
+    @GetMapping(value = "/pedidos/obtener-detallesPedido/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> obtenerDetallesPedidoPorId(@PathVariable String id) {
 
         try {

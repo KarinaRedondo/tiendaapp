@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/tiendas")
+@RequestMapping("/api/v1")
 
 public class ObtenerTiendaEspecificaControlador {
 
@@ -25,7 +25,7 @@ public class ObtenerTiendaEspecificaControlador {
         this.obtenerTiendaEspecificaServicio = obtenerTiendaEspecificaServicio;
     }
 
-    @GetMapping(value = "/obtener/{id}", headers = "Accept=application/json")
+    @GetMapping(value = "/tiendas/obtener/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> obtenerTiendaPorId(@PathVariable String id) {
 
         try {

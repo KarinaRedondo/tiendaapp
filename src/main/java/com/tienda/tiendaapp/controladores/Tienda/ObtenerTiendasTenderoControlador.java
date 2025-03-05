@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/tiendas")
+@RequestMapping("/api/v1")
 
 public class ObtenerTiendasTenderoControlador {
 
@@ -24,7 +24,7 @@ public class ObtenerTiendasTenderoControlador {
         this.obtenerTiendasTenderoServicio = obtenerTiendasTenderoServicio;
     }
 
-    @GetMapping(value = "/obtener-tiendasTendero/{id}", headers = "Accept=application/json")
+    @GetMapping(value = "/tiendas/obtener-tiendasTendero/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> obtenerTiendasTendero(@PathVariable String id) {
 
        try {

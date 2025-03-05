@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/vehiculos")
+@RequestMapping("/api/v1")
 
 public class RegistrarVehiculoControlador {
 
@@ -24,7 +24,7 @@ public class RegistrarVehiculoControlador {
        this.registrarVehículoServicio = registrarVehículoServicio;
     }
 
-    @PostMapping(value= "/registrar", headers = "Accept=application/json")
+    @PostMapping(value= "/vehiculos/registrar", headers = "Accept=application/json")
     public ResponseEntity<?> registrarVehiculo(@RequestBody CrearVehiculoDto crearVehiculoDto) {
 
         try {

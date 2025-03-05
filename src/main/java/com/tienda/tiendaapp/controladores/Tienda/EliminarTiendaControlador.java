@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/tiendas")
+@RequestMapping("/api/v1")
 
 public class EliminarTiendaControlador {
 
@@ -21,7 +21,7 @@ public class EliminarTiendaControlador {
         this.eliminarTiendaServicio = eliminarTiendaServicio;
     }
 
-    @DeleteMapping(value = "/eliminar/{id}", headers = "Accept=application/json")
+    @DeleteMapping(value = "/tiendas/eliminar/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> eliminarTienda(@PathVariable("id") String id) {
 
         try {

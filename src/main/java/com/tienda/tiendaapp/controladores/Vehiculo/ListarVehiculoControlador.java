@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/vehiculos")
+@RequestMapping("/api/v1")
 
 public class ListarVehiculoControlador {
 
@@ -23,7 +23,7 @@ public class ListarVehiculoControlador {
         this.listarVehiculoServicio = listarVehiculoServicio;
     }
 
-    @GetMapping(value = "/listar", headers = "Accept=application/json")
+    @GetMapping(value = "/vehiculos/listar", headers = "Accept=application/json")
     public ResponseEntity<?> listarVehiculoControlador() {
 
         try {

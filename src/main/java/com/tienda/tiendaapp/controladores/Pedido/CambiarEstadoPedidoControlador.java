@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/pedidos")
+@RequestMapping("/api/v1")
 
 public class CambiarEstadoPedidoControlador {
 
@@ -22,7 +22,7 @@ public class CambiarEstadoPedidoControlador {
         this.cambiarEstadoPedidoServicio = cambiarEstadoPedidoServicio;
     }
 
-    @PutMapping(value = "/cambiar-estado/{id}", headers = "Accept=application/json")
+    @PutMapping(value = "/pedidos/cambiar-estado/{id}", headers = "Accept=application/json")
     public ResponseEntity<?> cambiarEstado(@PathVariable String id, @RequestBody Map<String, String> request) {
         String nuevoEstado = request.get("estado");
 

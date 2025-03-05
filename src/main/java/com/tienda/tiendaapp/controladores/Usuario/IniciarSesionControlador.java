@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1")
 
 public class IniciarSesionControlador {
 
@@ -27,7 +27,7 @@ public class IniciarSesionControlador {
         this.iniciarSesionServicio = iniciarSesionServicio;
     }
 
-    @PostMapping(value = "/iniciar-sesion", headers = "Accept=application/json")
+    @PostMapping(value = "/usuarios/iniciar-sesion", headers = "Accept=application/json")
     public ResponseEntity<?> iniciarSesionControlador(@RequestBody IniciarSesionDto iniciarSesionDto) {
         try {
             Usuario usuarioLogueado = iniciarSesionServicio.IniciarSesion(iniciarSesionDto);

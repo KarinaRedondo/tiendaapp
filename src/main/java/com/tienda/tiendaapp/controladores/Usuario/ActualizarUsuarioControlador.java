@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/usuarios")
+@RequestMapping("/api/v1")
 
 public class ActualizarUsuarioControlador {
 
@@ -20,7 +20,7 @@ public class ActualizarUsuarioControlador {
         this.actualizarUsuarioServicio = actualizarUsuarioServicio;
     }
 
-    @PutMapping(value = "/actualizar", headers = "Accept=application/json")
+    @PutMapping(value = "/usuarios/actualizar", headers = "Accept=application/json")
     public ResponseEntity<?> actualizarUsuario(@RequestBody ActualizarUsuarioDto actualizarUsuarioDto) {
 
         try {

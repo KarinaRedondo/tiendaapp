@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/calificaciones")
+@RequestMapping("/api/v1")
 
 public class ActualizarCalificacionControlador {
 
@@ -23,7 +23,7 @@ public class ActualizarCalificacionControlador {
         this.actualizarCalificacionServicio = actualizarCalificacionServicio;
     }
 
-    @PutMapping(value = "/actualizar", headers = "Accept=application/json")
+    @PutMapping(value = "/calificaciones/actualizar", headers = "Accept=application/json")
     public ResponseEntity<?> actualizarCalificacion(@RequestBody ActualizarCalificacionDto actualizarCalificacionDto) {
 
         try {
