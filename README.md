@@ -38,7 +38,7 @@ El sistema es una plataforma de comercio local desarrollada con Spring Boot y ba
 -   Java 17
 
 ## Cómo empezar
-1. Clona este repositorio.
+1. Clona este repositorio git@github.com:KarinaRedondo/tiendaapp.git
 2. Configura la conexión a la base de datos en el archivo de configuración `application.properties`.
 3. Ejecuta la aplicación.
 
