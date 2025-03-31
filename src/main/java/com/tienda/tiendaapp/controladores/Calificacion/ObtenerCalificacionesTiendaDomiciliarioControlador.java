@@ -30,7 +30,7 @@ public class ObtenerCalificacionesTiendaDomiciliarioControlador {
         }
     }
 
-    @GetMapping("/obtener/domiciliario/{idDomiciliario}")
+    @GetMapping("/calificaciones/obtener/domiciliario/{idDomiciliario}")
     public ResponseEntity<?> obtenerCalificacionDomiciliario(@PathVariable String idDomiciliario) {
         try {
             return new ResponseEntity<>(obtenerCalificacionesTiendaDomiciliarioServicio.obtenerCalificacionDomiciliario(idDomiciliario), HttpStatus.OK);

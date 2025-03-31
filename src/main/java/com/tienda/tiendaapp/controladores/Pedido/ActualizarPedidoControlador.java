@@ -21,18 +21,13 @@ public class ActualizarPedidoControlador {
 
     @PutMapping(value = "/pedidos/actualizar", consumes = "application/json")
     public ResponseEntity<?> actualizarPedido(@RequestBody ActualizarPedidoDto actualizarPedidoDto) {
-        try {
-            if (actualizarPedidoDto == null || actualizarPedidoDto.getId() == null) {
-                return new ResponseEntity<>("El ID del pedido es obligatorio", HttpStatus.BAD_REQUEST);
-            }
 
+        try {
             Pedido pedidoActualizado = actualizarPedidoServicio.actualizarPedido(actualizarPedidoDto);
-            return ResponseEntity.ok(pedidoActualizado);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: " + e.getMessage());
+            return new ResponseEntity<>(pedidoActualizado, HttpStatus.OK);
         } catch (Exception exception) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Hubo un error al tratar de actualizar el pedido: " + exception.getMessage());
+            String mensajeDeError = "Hubo un error al tratar de actualizar el pedido: " + exception.getMessage();
+            return new ResponseEntity<>(mensajeDeError, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

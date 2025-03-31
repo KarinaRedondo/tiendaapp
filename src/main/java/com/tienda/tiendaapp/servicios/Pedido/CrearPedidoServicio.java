@@ -30,6 +30,7 @@ public class CrearPedidoServicio {
         pedido.setGananciaDomiciliario(crearPedidoDto.getGananciaDomiciliario());
         pedido.setComentariosTendero(crearPedidoDto.getComentariosTendero());
         pedido.setFechaCreacion(crearPedidoDto.getFechaCreacion());
+        pedido.setFechaEntrega(crearPedidoDto.getFechaEntrega());
         pedido.setFechaExpiracion(crearPedidoDto.getFechaExpiracion());
 
         return pedidoRepositorio.save(pedido);

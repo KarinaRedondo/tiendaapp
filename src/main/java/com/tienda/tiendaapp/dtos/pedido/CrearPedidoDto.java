@@ -16,6 +16,7 @@ public class CrearPedidoDto {
     private double gananciaDomiciliario;
     private String comentariosTendero;
     private String fechaCreacion;
+    private String fechaEntrega;
     private String fechaExpiracion;
 
     public String getIdCliente() {
@@ -96,6 +97,13 @@ public class CrearPedidoDto {
 
     public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+    public String getFechaEntrega() {
+        return fechaEntrega;
+    }
+
+    public void setFechaEntrega(String fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
     }
 
     public String getFechaExpiracion() {

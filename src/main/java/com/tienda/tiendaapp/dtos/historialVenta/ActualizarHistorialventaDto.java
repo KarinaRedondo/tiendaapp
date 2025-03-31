@@ -12,6 +12,7 @@ public class ActualizarHistorialventaDto {
     private double ventasDiarias;
     private double ventasSemanales;
     private double ventasMensuales;
+    private double ventasAnuales;
 
     public String getId() {
         return id;
@@ -59,5 +60,13 @@ public class ActualizarHistorialventaDto {
 
     public void setVentasMensuales(double ventasMensuales) {
         this.ventasMensuales = ventasMensuales;
+    }
+
+    public double getVentasAnuales() {
+        return ventasAnuales;
+    }
+
+    public void setVentasAnuales(double ventasAnuales) {
+        this.ventasAnuales = ventasAnuales;
     }
 }
