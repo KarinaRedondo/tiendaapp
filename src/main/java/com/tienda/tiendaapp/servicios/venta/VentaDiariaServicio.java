@@ -10,45 +10,59 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class VentaDiariaServicio {
 
     @Autowired
     private HistorialVentaRepositorio historialVentaRepositorio;
-    @Autowired
     private TiendaRepositorio tiendaRepositorio;
-    @Autowired
     private PedidoRepositorio pedidoRepositorio;
 
+    public VentaDiariaServicio(HistorialVentaRepositorio historialVentaRepositorio,
+                               TiendaRepositorio tiendaRepositorio,
+                               PedidoRepositorio pedidoRepositorio) {
+        this.historialVentaRepositorio = historialVentaRepositorio;
+        this.tiendaRepositorio = tiendaRepositorio;
+        this.pedidoRepositorio = pedidoRepositorio;
+    }
+
+    // Método para actualizar las ventas diarias
     public void actualizarVentasDiarias(String idPedido) {
         Pedido pedido = pedidoRepositorio.findById(idPedido)
                 .orElseThrow(() -> new RuntimeException("Pedido no encontrado"));
 
         if ("entregado".equalsIgnoreCase(pedido.getEstado())) {
-            String idTienda = pedido.getIdTienda();
-            double montoTotal = pedido.getMontoTotal();
-            LocalDate fechaEntrega = LocalDate.parse(pedido.getFechaEntrega());
+            String fechaEntrega = pedido.getFechaEntrega();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate fechaEntregaLocalDate = LocalDate.parse(fechaEntrega, formatter);
 
-            HistorialVenta historial = historialVentaRepositorio.findByIdTienda(idTienda);
-            if (historial == null) {
-                historial = new HistorialVenta();
-                historial.setIdTienda(idTienda);
-                historial.setFecha(fechaEntrega.toString());
-                historial.setVentasDiarias(montoTotal);
-            } else {
-                historial.setVentasDiarias(historial.getVentasDiarias() + montoTotal);
+            // Obtenemos la fecha de hoy
+            LocalDate fechaHoy = LocalDate.now();
+
+            // Comparamos si la venta ocurrió hoy
+            if (fechaEntregaLocalDate.equals(fechaHoy)) {
+                String idTienda = pedido.getIdTienda();
+                double montoTotal = pedido.getMontoTotal();
+
+                Tienda tienda = tiendaRepositorio.findById(idTienda)
+                        .orElseThrow(() -> new RuntimeException("Tienda no encontrada"));
+
+                HistorialVenta historialVenta = historialVentaRepositorio.findByIdTienda(idTienda);
+
+                if (historialVenta == null) {
+                    historialVenta = new HistorialVenta();
+                    historialVenta.setIdTienda(idTienda);
+                    historialVenta.setVentasDiarias(montoTotal);
+                } else {
+                    historialVenta.setVentasDiarias(historialVenta.getVentasDiarias() + montoTotal);
+                }
+
+                historialVentaRepositorio.save(historialVenta);
+                tienda.setTotalVentas(tienda.getTotalVentas() + montoTotal);
+                tiendaRepositorio.save(tienda);
             }
-
-            historialVentaRepositorio.save(historial);
-            actualizarTotalVentas(idTienda, montoTotal);
         }
-    }
-
-    private void actualizarTotalVentas(String idTienda, double monto) {
-        Tienda tienda = tiendaRepositorio.findById(idTienda)
-                .orElseThrow(() -> new RuntimeException("Tienda no encontrada"));
-        tienda.setTotalVentas(tienda.getTotalVentas() + monto);
-        tiendaRepositorio.save(tienda);
     }
 }
