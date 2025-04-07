@@ -45,7 +45,20 @@ public class ObtenerGananciasTiendaServicio {
                 .mapToDouble(GananciaTienda::getMonto)
                 .sum();
 
-        // Crear y retornar el DTO de respuesta
-        return new GananciasResponseDTO(totalSemanal, totalMensual);
+        // Calcular ganancias anuales
+        FechaUtils.RangoFechas rangoAnual = FechaUtils.obtenerRangoAnual(); // esto lo defines tú
+        List<GananciaTienda> gananciasAnuales = gananciaTiendaRepositorio
+                .findByIdTiendaAndFechaVentaBetween(
+                        idTienda,
+                        rangoAnual.getFechaInicio(),
+                        rangoAnual.getFechaFin()
+                );
+
+        double totalAnual = gananciasAnuales.stream()
+                .mapToDouble(GananciaTienda::getMonto)
+                .sum();
+
+        // Crear y retornar el DTO de respuesta (actualízalo si es necesario)
+        return new GananciasResponseDTO(totalSemanal, totalMensual, totalAnual);
     }
 }

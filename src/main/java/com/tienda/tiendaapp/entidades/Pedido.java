@@ -19,6 +19,7 @@ public class Pedido {
     private String estado;
     private String idDomiciliario;
     private double gananciaDomiciliario;
+    private double gananciaTienda;
     private String comentariosTendero;
     private String fechaCreacion;
     private String fechaEntrega;
@@ -94,6 +95,13 @@ public class Pedido {
 
     public void setGananciaDomiciliario(double gananciaDomiciliario) {
         this.gananciaDomiciliario = gananciaDomiciliario;
+    }
+    public double getGananciaTienda() {
+        return gananciaDomiciliario;
+    }
+
+    public void setGananciaTienda(double gananciaTienda) {
+        this.gananciaTienda = gananciaTienda;
     }
 
     public String getComentariosTendero() {

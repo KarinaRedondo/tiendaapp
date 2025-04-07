@@ -29,6 +29,24 @@ public class FechaUtils {
         );
     }
 
+    public static RangoFechas obtenerRangoAnual() {
+        LocalDate hoy = LocalDate.now();
+        LocalDate inicioAnio = hoy.with(TemporalAdjusters.firstDayOfYear());
+        LocalDate finAnio = hoy.with(TemporalAdjusters.lastDayOfYear());
+
+        return new RangoFechas(
+                inicioAnio.format(FORMATTER),
+                finAnio.format(FORMATTER)
+        );
+    }
+
+    public static RangoFechas obtenerRangoDiario() {
+        LocalDate hoy = LocalDate.now();
+        String fechaHoy = hoy.format(FORMATTER);
+
+        return new RangoFechas(fechaHoy, fechaHoy);
+    }
+
     public static class RangoFechas {
         private final String fechaInicio;
         private final String fechaFin;

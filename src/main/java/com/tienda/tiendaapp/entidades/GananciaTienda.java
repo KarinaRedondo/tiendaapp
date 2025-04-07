@@ -13,4 +13,8 @@ public class GananciaTienda {
     private String idPedido;
     private double monto;
     private String fechaVenta;
+    private double gananciaDiaria;
+    private double gananciaSemanal;
+    private double gananciaMensual;
+    private double gananciaAnual;
 }

@@ -6,9 +6,11 @@ import lombok.Data;
 public class GananciasResponseDTO {
     private double semanales;
     private double mensuales;
+    private double anuales;
 
-    public GananciasResponseDTO(double semanales, double mensuales) {
+    public GananciasResponseDTO(double diarias, double semanales, double mensuales) {
         this.semanales = semanales;
         this.mensuales = mensuales;
+        this.anuales = anuales;
     }
 }

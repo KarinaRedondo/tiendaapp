@@ -13,6 +13,10 @@ public class GananciaDomiciliario {
     private String id;
     private String idDomiciliario;
     private String idPedido;
+    private double monto;
     private double gananciaDiaria;
+    private double gananciaSemanal;
+    private double gananciaMensual;
+    private double gananciaAnual;
     private String fechaEntrega;
 }

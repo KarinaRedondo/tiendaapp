@@ -1,4 +1,4 @@
-package com.tienda.tiendaapp.servicios.ganancia;
+package com.tienda.tiendaapp.servicios.gananciaDomiciliario;
 
 import com.tienda.tiendaapp.entidades.GananciaDomiciliario;
 import com.tienda.tiendaapp.entidades.Pedido;
