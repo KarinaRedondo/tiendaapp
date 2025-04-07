@@ -7,11 +7,11 @@ import com.tienda.tiendaapp.repositorios.PedidoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.temporal.TemporalAdjusters;
 
 @Service
-public class GananciaAnualServicio {
+public class GananciaSemanalTiendaServicio {
 
     @Autowired
     private PedidoRepositorio pedidoRepositorio;
@@ -19,16 +19,16 @@ public class GananciaAnualServicio {
     @Autowired
     private GananciaTiendaRepositorio gananciaTiendaRepositorio;
 
-    public void actualizarGananciaAnual(String idPedido) {
+    public void actualizarGananciaSemanal(String idPedido) {
         Pedido pedido = pedidoRepositorio.findById(idPedido).orElse(null);
 
         if (pedido != null && "entregado".equalsIgnoreCase(pedido.getEstado())) {
             LocalDate fechaEntrega = LocalDate.parse(pedido.getFechaEntrega());
-            LocalDate inicioAnio = fechaEntrega.with(TemporalAdjusters.firstDayOfYear());
-            LocalDate finAnio = fechaEntrega.with(TemporalAdjusters.lastDayOfYear());
+            LocalDate inicioSemana = fechaEntrega.with(DayOfWeek.MONDAY);
+            LocalDate finSemana = inicioSemana.plusDays(6);
             LocalDate hoy = LocalDate.now();
 
-            if (!hoy.isBefore(inicioAnio) && !hoy.isAfter(finAnio)) {
+            if (!hoy.isBefore(inicioSemana) && !hoy.isAfter(finSemana)) {
                 String idTienda = pedido.getIdTienda();
                 double ganancia = pedido.getGananciaTienda();
 
@@ -36,10 +36,10 @@ public class GananciaAnualServicio {
                 if (gananciaTienda == null) {
                     gananciaTienda = new GananciaTienda();
                     gananciaTienda.setIdTienda(idTienda);
-                    gananciaTienda.setGananciaAnual(ganancia);
+                    gananciaTienda.setGananciaSemanal(ganancia);
                     gananciaTienda.setFechaVenta(hoy.toString());
                 } else {
-                    gananciaTienda.setGananciaAnual(gananciaTienda.getGananciaAnual() + ganancia);
+                    gananciaTienda.setGananciaSemanal(gananciaTienda.getGananciaSemanal() + ganancia);
                 }
 
                 gananciaTiendaRepositorio.save(gananciaTienda);

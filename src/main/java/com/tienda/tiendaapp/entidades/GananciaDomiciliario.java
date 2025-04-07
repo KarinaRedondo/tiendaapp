@@ -18,5 +18,77 @@ public class GananciaDomiciliario {
     private double gananciaSemanal;
     private double gananciaMensual;
     private double gananciaAnual;
-    private String fechaEntrega;
+    private String fechaVenta;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIdDomiciliario() {
+        return idDomiciliario;
+    }
+
+    public void setIdDomiciliario(String idDomiciliario) {
+        this.idDomiciliario = idDomiciliario;
+    }
+
+    public String getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(String idPedido) {
+        this.idPedido = idPedido;
+    }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public double getGananciaDiaria() {
+        return gananciaDiaria;
+    }
+
+    public void setGananciaDiaria(double gananciaDiaria) {
+        this.gananciaDiaria = gananciaDiaria;
+    }
+
+    public double getGananciaSemanal() {
+        return gananciaSemanal;
+    }
+
+    public void setGananciaSemanal(double gananciaSemanal) {
+        this.gananciaSemanal = gananciaSemanal;
+    }
+
+    public double getGananciaMensual() {
+        return gananciaMensual;
+    }
+
+    public void setGananciaMensual(double gananciaMensual) {
+        this.gananciaMensual = gananciaMensual;
+    }
+
+    public double getGananciaAnual() {
+        return gananciaAnual;
+    }
+
+    public void setGananciaAnual(double gananciaAnual) {
+        this.gananciaAnual = gananciaAnual;
+    }
+
+    public String getFechaVenta() {
+        return fechaVenta;
+    }
+
+    public void setFechaVenta(String fechaVenta) {
+        this.fechaVenta = fechaVenta;
+    }
 }

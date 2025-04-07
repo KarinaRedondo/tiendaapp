@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 
 @Service
-public class GananciaMensualServicio {
+public class GananciaAnualTiendaServicio {
 
     @Autowired
     private PedidoRepositorio pedidoRepositorio;
@@ -19,16 +19,16 @@ public class GananciaMensualServicio {
     @Autowired
     private GananciaTiendaRepositorio gananciaTiendaRepositorio;
 
-    public void actualizarGananciaMensual(String idPedido) {
+    public void actualizarGananciaAnual(String idPedido) {
         Pedido pedido = pedidoRepositorio.findById(idPedido).orElse(null);
 
         if (pedido != null && "entregado".equalsIgnoreCase(pedido.getEstado())) {
             LocalDate fechaEntrega = LocalDate.parse(pedido.getFechaEntrega());
-            LocalDate inicioMes = fechaEntrega.with(TemporalAdjusters.firstDayOfMonth());
-            LocalDate finMes = fechaEntrega.with(TemporalAdjusters.lastDayOfMonth());
+            LocalDate inicioAnio = fechaEntrega.with(TemporalAdjusters.firstDayOfYear());
+            LocalDate finAnio = fechaEntrega.with(TemporalAdjusters.lastDayOfYear());
             LocalDate hoy = LocalDate.now();
 
-            if (!hoy.isBefore(inicioMes) && !hoy.isAfter(finMes)) {
+            if (!hoy.isBefore(inicioAnio) && !hoy.isAfter(finAnio)) {
                 String idTienda = pedido.getIdTienda();
                 double ganancia = pedido.getGananciaTienda();
 
@@ -36,10 +36,10 @@ public class GananciaMensualServicio {
                 if (gananciaTienda == null) {
                     gananciaTienda = new GananciaTienda();
                     gananciaTienda.setIdTienda(idTienda);
-                    gananciaTienda.setGananciaMensual(ganancia);
+                    gananciaTienda.setGananciaAnual(ganancia);
                     gananciaTienda.setFechaVenta(hoy.toString());
                 } else {
-                    gananciaTienda.setGananciaMensual(gananciaTienda.getGananciaMensual() + ganancia);
+                    gananciaTienda.setGananciaAnual(gananciaTienda.getGananciaAnual() + ganancia);
                 }
 
                 gananciaTiendaRepositorio.save(gananciaTienda);
@@ -47,3 +47,4 @@ public class GananciaMensualServicio {
         }
     }
 }
+

@@ -45,7 +45,7 @@ public class ActualizarPedidoServicio {
             nuevaGanancia.setIdDomiciliario(pedido.getIdDomiciliario());
             nuevaGanancia.setIdPedido(pedido.getId());
             nuevaGanancia.setGananciaDiaria(pedido.getGananciaDomiciliario());
-            nuevaGanancia.setFechaEntrega(pedido.getFechaEntrega());
+            nuevaGanancia.setFechaVenta(pedido.getFechaEntrega());
             gananciaDomiciliarioRepositorio.save(nuevaGanancia);
 
             // Registrar ganancia de la tienda
