@@ -1,56 +1,65 @@
 package com.tienda.tiendaapp.servicios.Pedido;
 
-import com.tienda.tiendaapp.entidades.Pedido;
+import com.tienda.tiendaapp.entidades.*;
 import com.tienda.tiendaapp.dtos.pedido.ActualizarPedidoDto;
-import com.tienda.tiendaapp.repositorios.PedidoRepositorio;
+import com.tienda.tiendaapp.repositorios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-
 public class ActualizarPedidoServicio {
 
-    private final PedidoRepositorio pedidoRepositorio;
+    @Autowired
+    private PedidoRepositorio pedidoRepositorio;
 
     @Autowired
-    public ActualizarPedidoServicio(
-            PedidoRepositorio pedidoRepositorio) {
-        this.pedidoRepositorio = pedidoRepositorio;
-    }
+    private GananciaDomiciliarioRepositorio gananciaDomiciliarioRepositorio;
 
-    public Pedido actualizarPedido(ActualizarPedidoDto actualizarPedidoDto) {
-        List<Pedido> listaDePedidos = pedidoRepositorio.findAll();
-        Pedido pedidoEncontrado = null;
+    @Autowired
+    private GananciaTiendaRepositorio gananciaTiendaRepositorio;
 
-        for (Pedido pedido : listaDePedidos) {
-            if (pedido.getId().equals(actualizarPedidoDto.getId())) {
-                pedidoEncontrado = pedido;
-                break;
-            }
-        }
+    public Pedido actualizarPedido(ActualizarPedidoDto dto) {
 
-        if (pedidoEncontrado != null) {
-            pedidoEncontrado.setIdCliente(actualizarPedidoDto.getIdCliente());
-            pedidoEncontrado.setIdTienda(actualizarPedidoDto.getIdTienda());
-            pedidoEncontrado.setDescripcionPedido(actualizarPedidoDto.getDescripcionPedido());
-            pedidoEncontrado.setMontoTotal(actualizarPedidoDto.getMontoTotal());
-            pedidoEncontrado.setPrecioDomicilio(actualizarPedidoDto.getPrecioDomicilio());
-            pedidoEncontrado.setEstado(actualizarPedidoDto.getEstado());
-            pedidoEncontrado.setIdDomiciliario(actualizarPedidoDto.getIdDomiciliario());
-            pedidoEncontrado.setGananciaDomiciliario(actualizarPedidoDto.getGananciaDomiciliario());
-            pedidoEncontrado.setComentariosTendero(actualizarPedidoDto.getComentariosTendero());
-            pedidoEncontrado.setFechaCreacion(actualizarPedidoDto.getFechaCreacion());
-            pedidoEncontrado.setFechaEntrega(actualizarPedidoDto.getFechaEntrega());
-            pedidoEncontrado.setFechaExpiracion(actualizarPedidoDto.getFechaExpiracion());
+        Pedido pedido = pedidoRepositorio.findById(dto.getId()).orElse(null);
 
-            return pedidoRepositorio.save(pedidoEncontrado);
-        } else {
+        if (pedido == null) {
+            System.out.println("No se encontró el pedido con ID: " + dto.getId());
             return null;
         }
+
+
+        String estadoAnterior = pedido.getEstado();
+
+        // Actualizar los datos del pedido
+        pedido.setEstado(dto.getEstado());
+        pedido.setIdDomiciliario(dto.getIdDomiciliario());
+        pedido.setGananciaDomiciliario(dto.getGananciaDomiciliario());
+        pedido.setFechaEntrega(dto.getFechaEntrega());
+
+
+        // Verificar si el estado cambió a "entregado"
+        if (dto.getEstado().equals("entregado") && !estadoAnterior.equals("entregado")) {
+
+            // Registrar ganancia del domiciliario
+            GananciaDomiciliario nuevaGanancia = new GananciaDomiciliario();
+            nuevaGanancia.setIdDomiciliario(pedido.getIdDomiciliario());
+            nuevaGanancia.setIdPedido(pedido.getId());
+            nuevaGanancia.setGananciaDiaria(pedido.getGananciaDomiciliario());
+            nuevaGanancia.setFechaEntrega(pedido.getFechaEntrega());
+            gananciaDomiciliarioRepositorio.save(nuevaGanancia);
+
+            // Registrar ganancia de la tienda
+            GananciaTienda gananciaTienda = new GananciaTienda();
+            gananciaTienda.setIdTienda(pedido.getIdTienda());
+            gananciaTienda.setIdPedido(pedido.getId());
+            gananciaTienda.setMonto(pedido.getMontoTotal());
+            gananciaTienda.setFechaVenta(pedido.getFechaEntrega());
+            gananciaTiendaRepositorio.save(gananciaTienda);
+
+            System.out.println("Pedido marcado como entregado. Ganancias registradas.");
+        }
+
+        // Guardar los cambios en el pedido
+        return pedidoRepositorio.save(pedido);
     }
 }
-
-
-
