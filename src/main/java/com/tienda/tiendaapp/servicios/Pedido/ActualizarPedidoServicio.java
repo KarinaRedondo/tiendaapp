@@ -44,7 +44,7 @@ public class ActualizarPedidoServicio {
             GananciaDomiciliario nuevaGanancia = new GananciaDomiciliario();
             nuevaGanancia.setIdDomiciliario(pedido.getIdDomiciliario());
             nuevaGanancia.setIdPedido(pedido.getId());
-            nuevaGanancia.setGananciaDiaria(pedido.getGananciaDomiciliario());
+            nuevaGanancia.setMonto(pedido.getGananciaDomiciliario());
             nuevaGanancia.setFechaVenta(pedido.getFechaEntrega());
             gananciaDomiciliarioRepositorio.save(nuevaGanancia);
 

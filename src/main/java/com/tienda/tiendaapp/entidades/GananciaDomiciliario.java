@@ -14,10 +14,6 @@ public class GananciaDomiciliario {
     private String idDomiciliario;
     private String idPedido;
     private double monto;
-    private double gananciaDiaria;
-    private double gananciaSemanal;
-    private double gananciaMensual;
-    private double gananciaAnual;
     private String fechaVenta;
 
     public String getId() {
@@ -52,37 +48,6 @@ public class GananciaDomiciliario {
         this.monto = monto;
     }
 
-    public double getGananciaDiaria() {
-        return gananciaDiaria;
-    }
-
-    public void setGananciaDiaria(double gananciaDiaria) {
-        this.gananciaDiaria = gananciaDiaria;
-    }
-
-    public double getGananciaSemanal() {
-        return gananciaSemanal;
-    }
-
-    public void setGananciaSemanal(double gananciaSemanal) {
-        this.gananciaSemanal = gananciaSemanal;
-    }
-
-    public double getGananciaMensual() {
-        return gananciaMensual;
-    }
-
-    public void setGananciaMensual(double gananciaMensual) {
-        this.gananciaMensual = gananciaMensual;
-    }
-
-    public double getGananciaAnual() {
-        return gananciaAnual;
-    }
-
-    public void setGananciaAnual(double gananciaAnual) {
-        this.gananciaAnual = gananciaAnual;
-    }
 
     public String getFechaVenta() {
         return fechaVenta;
